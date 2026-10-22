@@ -1,0 +1,15 @@
+export const UNITS=['kg','sac','panier','caisse','tonne','unité']
+export const COMMUNES=['Cotonou','Porto-Novo','Abomey-Calavi','Parakou','Bohicon','Ouidah','Lokossa','Natitingou','Djougou','Kandi']
+export const STATUS={pending:'En attente',approved:'Approuvée',rejected:'Rejetée',suspended:'Suspendue',archived:'Archivée'}
+export const REPORT_REASONS=['Prix manifestement trompeur','Produit inexistant','Informations mensongères','Contenu inapproprié',"Tentative d'escroquerie",'Autre motif']
+const C=[['cereales','Céréales'],['tubercules','Tubercules et racines'],['legumes','Légumes'],['fruits','Fruits'],['legumineuses','Légumineuses'],['epices','Épices et condiments'],['transformes','Produits transformés'],['autres','Autres produits agricoles']]
+export const DEMO_CATEGORIES=C.map(([slug,name])=>({id:slug,slug,name}))
+// Photos Pexels (licence Pexels : usage gratuit). Sources et identifiants : voir README > Crédits photos.
+const PX=(path,w=800)=>`https://images.pexels.com/photos/${path}?cs=tinysrgb&w=${w}`
+const P={farm:'34632463/pexels-photo-34632463/free-photo-of-rural-farmers-working-in-african-landscape.jpeg',soil:'37345040/pexels-photo-37345040/free-photo-of-farmers-tending-soil-in-rural-landscape.jpeg',
+ mk1:'31162582/pexels-photo-31162582/free-photo-of-vibrant-african-market-with-fresh-produce-display.jpeg',mk2:'35726906/pexels-photo-35726906/free-photo-of-african-market-stall-with-fresh-produce.jpeg',mk3:'36611201/pexels-photo-36611201/free-photo-of-traditional-african-market-scene-with-produce.jpeg',
+ tom:'15170758/pexels-photo-15170758/free-photo-of-street-stall-with-tomatoes.jpeg',corn:'872483/pexels-photo-872483.jpeg'}
+export const PHOTOS={hero:PX(P.farm,1600),farm:PX(P.farm),soil:PX(P.soil),market:PX(P.mk1),corn:PX(P.corn)}
+const MARKET='Photo illustrative : étal de produits agricoles sur un marché africain'
+const d=(i,name,slug,price,unit,quantity,commune,img,alt)=>({id:'demo'+i,demo:true,name,price,unit,quantity,commune,is_available:true,status:'approved',images:[img],alt,created_at:`2026-10-${10+i}`,description:'Annonce fictive de démonstration, sans produit réel.',categories:{name:C.find(c=>c[0]===slug)[1],slug},seller:{full_name:'Vendeur fictif',commune,phone:null}})
+export const DEMO_PRODUCTS=[d(1,'Maïs blanc','cereales',350,'kg',500,'Parakou',PX(P.corn),'Photo illustrative : épis de maïs prêts à être récoltés'),d(2,'Manioc frais','tubercules',8000,'sac',40,'Bohicon',PX(P.mk2),MARKET),d(3,'Tomates','legumes',12000,'caisse',25,'Abomey-Calavi',PX(P.tom),'Photo illustrative : étal de tomates'),d(4,'Piment frais','epices',1500,'kg',60,'Ouidah',PX(P.mk1),MARKET),d(5,'Haricot niébé','legumineuses',700,'kg',300,'Natitingou',PX(P.mk3),MARKET),d(6,'Ananas','fruits',500,'unité',200,'Porto-Novo',PX(P.mk1),MARKET),d(7,'Igname','tubercules',900,'kg',400,'Djougou',PX(P.mk2),MARKET)]
